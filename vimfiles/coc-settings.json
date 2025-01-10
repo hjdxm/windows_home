@@ -1,0 +1,10 @@
+{
+    "inlayHint.enable": false,
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.floatActions": true,
+	"python.linting.enabled": true,
+    "python.linting.pylspEnabled": true,
+    "python.linting.pylspArgs": ["--ignore=E501"],
+    "pylsp.plugins.pycodestyle.enabled": true,
+    "pylsp.plugins.pycodestyle.ignore": ["E501"]
+}
