@@ -10,6 +10,7 @@ set hlsearch
 set wildmenu
 set hidden
 set showmatch
+set foldmethod=indent
 
 let mapleader=','
 nnoremap <leader>p :set paste!<CR>
@@ -19,35 +20,6 @@ nnoremap <leader>F :CocCommand editor.action.formatDocument<CR>
 command! -nargs=1 Vr vertical resize <args><CR>
 command! -nargs=1 Hr resize <args><CR>
 
-function! WrapText(wrapper)
-    " Get the current visual selection
-    let l:selection = getline("'<")[col("'<")-1:col("'>")-1]
-    
-    " Check the wrapper character and wrap the text accordingly
-    if a:wrapper == '('
-        let l:wrapped = '(' . l:selection . ')'
-    elseif a:wrapper == '{'
-        let l:wrapped = '{' . l:selection . '}'
-    elseif a:wrapper == '['
-        let l:wrapped = '[' . l:selection . ']'
-    elseif a:wrapper == '<'
-        let l:wrapped = '<' . l:selection . '>'
-    elseif a:wrapper == "'"
-        let l:wrapped = "'" . l:selection . "'"
-    elseif a:wrapper == '"'
-        let l:wrapped = '"' . l:selection . '"'
-    elseif a:wrapper == '`'
-        let l:wrapped = '`' . l:selection . '`'
-    else
-        " For other characters, use <tag>selected text</tag>
-        let l:wrapped = '<' . a:wrapper . '>' . l:selection . '</' . a:wrapper . '>'
-    endif
-    
-    " Replace the selected text with the wrapped text
-    call setline("'<", substitute(getline("'<"), l:selection, l:wrapped, ''))
-endfunction
-xnoremap <Leader>a :<C-U>call WrapText(input('Enter wrapper: '))<CR>
-
 " Plug configuration
 " ==================
 " ==================
@@ -55,6 +27,24 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+Plug 'img-paste-devs/img-paste.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+" markdown_preview configuration
+" ==================
+" ==================
+"nmap <C-s> <Plug>MarkdownPreview
+"nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
+
+" img_paste configuration
+" ==================
+" ==================
+autocmd FileType markdown nmap <buffer><silent> <leader>g :call mdip#MarkdownClipboardImage()<CR>
+" there are some defaults for image directory and image name, you can change
+" them
+let g:mdip_imgdir = 'md_img'
+let g:mdip_imgname = 'image'
 
 call plug#end()
 
