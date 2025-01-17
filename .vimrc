@@ -12,7 +12,7 @@ set hidden
 set showmatch
 set foldmethod=indent
 
-let mapleader=','
+let mapleader=' '
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>l :set hlsearch!<CR>
 nnoremap <leader>e :CocCommand explorer<CR>
@@ -86,6 +86,9 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
+" coc.nvim 插件配置，绑定 <C-k> 键触发参数提醒
+inoremap <silent><expr> <C-k> coc#refresh()
+
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
