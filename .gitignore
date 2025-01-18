@@ -1,0 +1,8 @@
+# ignore all
+*
+
+# track
+!.vimrc
+!README.md
+!vimfiles/coc-settings.json
+!.gitignore

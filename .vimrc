@@ -29,6 +29,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'img-paste-devs/img-paste.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-surround'
 
 " markdown_preview configuration
 " ==================
