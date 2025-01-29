@@ -15,8 +15,8 @@ set foldmethod=indent
 let mapleader=' '
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>l :set hlsearch!<CR>
-nnoremap <leader>e :CocCommand explorer<CR>
 nnoremap <leader>F :CocCommand editor.action.formatDocument<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 command! -nargs=1 Vr vertical resize <args><CR>
 command! -nargs=1 Hr resize <args><CR>
 
@@ -33,6 +33,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+
+call plug#end()
+
+" nerdtree configuration
+" ==================
+" ==================
+Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " markdown_preview configuration
 " ==================
@@ -50,7 +60,6 @@ autocmd FileType markdown nmap <buffer><silent> <leader>g :call mdip#MarkdownCli
 let g:mdip_imgdir = 'md_img'
 let g:mdip_imgname = 'image'
 
-call plug#end()
 
 " Coc configuration
 " =================
@@ -103,7 +112,7 @@ function! ShowDocumentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
@@ -113,7 +122,7 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
+  autocm
   " Setup formatexpr specified filetype(s)
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
