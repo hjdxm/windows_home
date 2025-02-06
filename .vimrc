@@ -34,6 +34,7 @@ Plug 'junegunn/gv.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 call plug#end()
 
