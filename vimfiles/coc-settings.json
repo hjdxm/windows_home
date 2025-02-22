@@ -5,4 +5,10 @@
 	"python.linting.enabled": true,
     "python.linting.pylspEnabled": true,
     "python.linting.pylspArgs": ["--ignore=E501"],
+    "python.formatting.autopep8Args": [
+              "--ignore", "E501,W503,E401,E402"
+                ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnusedVariable": "none"
+    },
 }

@@ -2,7 +2,12 @@
 *
 
 # track
+!.gitignore
 !.vimrc
 !README.md
+
+!vimfiles/
 !vimfiles/coc-settings.json
-!.gitignore
+!vimfiles/after/
+!vimfiles/after/ftplugin/
+!vimfiles/after/ftplugin/*

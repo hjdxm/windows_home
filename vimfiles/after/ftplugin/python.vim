@@ -1,0 +1,2 @@
+iabbrev ''' '''<CR>'''
+iabbrev """ """<CR>"""
